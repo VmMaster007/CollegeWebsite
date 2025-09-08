@@ -1,20 +1,21 @@
 {% extends 'pages/base.html' %}
-
+{% load crispy_forms_tags %}
 
 {% block content %}
     <h1>Login Page</h1>
 <p>my best game is {{game}}</p>
 
 <p>you are logged in already as {{user}}</p>
-
+<div class="container bg-light p-5">
 <a href="{% url '' %}">Home</a>
 
 <form method="POST">
     {% csrf_token %}
-    {{login_form}}
+    {{login_form|crispy}}
     <br>
     <button type="submit">
         Login
     </button>
 </form>
+</div>
 {% endblock %}
