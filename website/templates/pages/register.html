@@ -1,0 +1,22 @@
+{% block content %}
+<body>
+<br>
+<div class="container bg-dark p-5">
+    <h3>Create Your Account</h3>
+    <h5>Manage Your Clients</h5>
+    <hr>
+    <br>
+    <form method="POST" autocomplete="off">
+        {% csrf_token %}
+        {{form.as_p}}
+        <br>
+        <button type="submit" class="btn btn-primary w-100 btn-block p-2">Create Account</button>
+    </form>
+    <br>
+    <div class="text-centre">
+        <p>Already Have an account?</p>
+    </div>
+    <br>
+</div>
+</body>
+{% endblock %}
