@@ -1,6 +1,36 @@
 {% extends 'pages/base.html' %}
 {% block content %}
 
-<h1>Welcome to your dashboard {{user}}</h1>
+<h1 class="text-dark">Welcome to your dashboard {{user}}</h1>
+<hr>
 
+<table class="table table-light table-hover table_bordered">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Full Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Address</th>
+      <th scope="col">City</th>
+      <th scope="col">Date Joined</th>
+      <th scope="col">View</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+
+{% if Records %}
+    {% for Record in Records %}
+        <tr>
+            <td>{{Record.id}}</td>
+            <td>{{Record.first_name}} {{Record.last_name}}</td>
+            <td>{{Record.email}}</td>
+            <td>{{Record.phone}}</td>
+            <td>{{Record.address}}</td>
+            <td>{{Record.city}}</td>
+            <td>{{Record.creation_data}}</td>
+            <td>To Finish</td>
+        </tr>
+    {% endfor %}
+{% endif %}
 {% endblock %}

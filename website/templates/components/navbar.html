@@ -1,7 +1,7 @@
 {% block content %}
 <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="#"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -22,13 +22,22 @@
           <a class="nav-link" href="{% url 'login' %}">Login</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><svg viewBox="0 0 100 80" width="25" height="25">
+  <rect width="100" height="10"></rect>
+  <rect y="30" width="100" height="10"></rect>
+  <rect y="60" width="100" height="10"></rect>
+</svg></a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Separated link</a>
+            {% if user.is_authenticated %}
+            <color class="col"><h6>Admin Menu</h6></color>
+            <a class="dropdown-item" href="{% url 'dashboard' %}">Dashboard</a>
+            <a class="dropdown-item" href="{% url 'create_record' %}">Create User</a>
+            {% endif %}
+            <div class="dropdown-divider"></div>
+             <a class="dropdown-item" href="{% url 'login' %}">Login</a>
+            <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+            <div class="dropdown-divider"></div>
           </div>
         </li>
       </ul>

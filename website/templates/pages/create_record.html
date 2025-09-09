@@ -1,0 +1,12 @@
+{% extends 'pages/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container bg-light">
+    <form method="POST">
+        {% csrf_token %}
+        {{create_form|crispy}}
+        <button type="submit" class="btn btn-primary w-100 btn-block p-2">Create Record</button>
+    </form>
+</div>
+{% endblock %}
