@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import CreateUserForm, LoginForm
 from django.contrib.auth.models import auth
 from django.contrib.auth import authenticate
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def home(request):
@@ -21,10 +22,9 @@ def login(request):
 
             if user is not None:
                 auth.login(request, user)
-                return redirect('')
+                return redirect('dashboard')
 
-    context = {'login_form':form,
-               'game':"CS go"}
+    context = {'login_form':form}
     return render(request,'pages/login.html', context=context)
 
 def register(request):
@@ -39,3 +39,11 @@ def register(request):
     context = {'form' : form}
 
     return render(request, 'pages/register.html', context=context)
+
+def logout(request):
+    auth.logout(request)
+    return redirect('login')
+
+@login_required(login_url="login")
+def dashboard(request):
+    return render(request, 'pages/dashboard.html')
